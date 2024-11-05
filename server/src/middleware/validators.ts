@@ -38,23 +38,23 @@ export const userLoginValidator = [
     validate
 ];
 
-// Validator for property creation
-export const propertyCreationValidator = [
-    body('title')
-        .isString()
-        .withMessage('Title must be a string')
-        .isLength({ min: 5 })
-        .withMessage('Title must be at least 5 characters long'),
-    body('description')
-        .isString()
-        .withMessage('Description must be a string')
-        .isLength({ min: 10 })
-        .withMessage('Description must be at least 10 characters long'),
-    body('price')
-        .isFloat({ gt: 0 })
-        .withMessage('Price must be a positive number'),
-    body('location')
-        .isString()
-        .withMessage('Location must be a string'),
-    validate
-];
+// // Validator for property creation
+// export const propertyCreationValidator = [
+//     body('title')
+//         .isString()
+//         .withMessage('Title must be a string')
+//         .isLength({ min: 5 })
+//         .withMessage('Title must be at least 5 characters long'),
+//     body('description')
+//         .isString()
+//         .withMessage('Description must be a string')
+//         .isLength({ min: 10 })
+//         .withMessage('Description must be at least 10 characters long'),
+//     body('price')
+//         .isFloat({ gt: 0 })
+//         .withMessage('Price must be a positive number'),
+//     body('location')
+//         .isString()
+//         .withMessage('Location must be a string'),
+//     validate
+// ];

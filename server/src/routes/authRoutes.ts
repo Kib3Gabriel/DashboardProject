@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { register, login, getAllUsers, getUserById, updateUser, deleteUserById } from '../controllers/authController';
 import { userRegistrationValidator, userLoginValidator } from '../middleware/validators';
+import {authenticateToken} from '../middleware/auth';
 
 const router = Router();
 

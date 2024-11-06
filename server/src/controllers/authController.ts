@@ -48,7 +48,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       secure: process.env.NODE_ENV === 'production',
     });
 
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ message: 'Login successful',token });
     
   } catch (error) {
     res.status(500).json({ message: 'Error logging in', error });
@@ -66,3 +66,5 @@ export const getAllUsers = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error fetching users', error });
   }
 };
+
+

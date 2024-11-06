@@ -1,15 +1,13 @@
 import { Router } from 'express';
-import { register, login, getAllUsers, getUserById, updateUser, deleteUserById } from '../controllers/authController';
+import { register, login, getAllUsers } from '../controllers/authController';
 import { userRegistrationValidator, userLoginValidator } from '../middleware/validators';
 import {authenticateToken} from '../middleware/auth';
 
 const router = Router();
 
 router.post('/register', userRegistrationValidator, register);
-router.post('/login', userLoginValidator, login);
-router.get('/getAllUsers', getAllUsers);
-router.get('/getUserById/:id', getUserById);
-router.patch('/updateUser/:id', updateUser);
-router.delete('/deleteUserById/:id', deleteUserById);
+router.post('/login',  userLoginValidator,  login);
+router.get('/getAllUsers', authenticateToken, getAllUsers);
+
 
 export default router;

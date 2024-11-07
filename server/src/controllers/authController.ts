@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import axios, { responseEncoding } from 'axios';
 
 
 const prisma = new PrismaClient();
@@ -67,4 +68,74 @@ export const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
+// delete
+export const deleteUserById = async (req:Request, res:Response) =>{
+  const {id} = req.params;
 
+  try{
+    await prisma.user.delete({where:{id:Number(id)}})
+    res.json({message:'User deleted successfully'})
+  }catch(error:any){
+    if(error.code ==='p2025'){
+      res.status(404).json({message:'User not found'});
+    }else{
+      res.status(500).json({message:'Error deleting user', error});
+    }
+  }
+}
+
+
+
+
+
+//Testing Stock APIS
+export const checkAPI = async (req:Request, res:Response)=>{
+  try{
+    const options={
+      method:'GET',
+      url:`https://api.finage.co.uk/last/stock/AAPL?apikey=${process.env.FINAGEAPI_KEY}`,
+      json:true
+    };
+
+    const response = await axios.request(options);
+    //return data in json format
+    res.json(response.data);  
+
+  }catch(error){
+    console.error('API Error:', error);
+    res.status(500).json({error:'Error fetching the data'})
+  }
+}
+
+
+//taking specific data
+export const getStockData = async (req:Request, res:Response)=>{
+  try{
+    const stockSymbol = req.params.symbol || 'AAPL';
+    const apiUrl = `https://api.finage.co.uk/last/stock/${stockSymbol}?apikey=${process.env.FINAGEAPI_KEY}`;
+
+    const response = await axios.get(apiUrl);
+
+    // values we'll use to display the data
+    const {symbol, ask, asize, bid, bsize, timestamp} = response.data;
+
+    const formattedTimeStamp = new Date(timestamp).toLocaleString();
+
+    res.json({
+      symbol,
+      askPrice :ask,
+      askSize: asize,
+      bidPrice: bid,
+      bidSize:bsize,
+      lastUpdated: formattedTimeStamp,
+    });
+
+  }catch(error){
+    console.error('Error fetching stock data:', error);
+    res.status(500).json({message:'Error fetching stock data', error})
+  }
+}
+
+export const checkServerRunning = async(req:Request, res:Response) =>{
+  res.send('Server running ...👍👍')
+}

@@ -8,10 +8,10 @@ const PORT = process.env.PORT || 5000;
 const main = async () => {
   try {
     await prisma.$connect();
-    console.log('Database connected successfully');
+    console.log('Database connected successfully'.blue);
 
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`.green);
+      console.log(`Server running on http://localhost:${PORT}`.blue);
     });
   } catch (error) {
     console.error('Error connecting to the database:'.red, error);
@@ -20,3 +20,4 @@ const main = async () => {
 };
 
 main();
+

@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import Login from './components/LoginSignUp/LoginSingup'
+
+import LoginSignup from './components/LoginSignUp/LoginSignup'
 
 function App() {
 
   return (
     <>
-      <Login/>
+      <LoginSignup/>
       
     </>
   )

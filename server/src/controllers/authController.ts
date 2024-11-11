@@ -11,7 +11,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id, username, email, password } = req.body;
 
-    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     //creating user with Prisma
@@ -23,7 +22,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         password: hashedPassword,
       },
     });
-
     res.status(201).json({ message: 'User registered successfully', user });
   } catch (error) {
     res.status(500).json({ message: 'Error registering user', error });
@@ -85,9 +83,6 @@ export const deleteUserById = async (req:Request, res:Response) =>{
 }
 
 
-
-
-
 //Testing Stock APIS
 export const checkAPI = async (req:Request, res:Response)=>{
   try{
@@ -108,7 +103,6 @@ export const checkAPI = async (req:Request, res:Response)=>{
 }
 
 
-//taking specific data
 export const getStockData = async (req:Request, res:Response)=>{
   try{
     const stockSymbol = req.params.symbol || 'AAPL';
@@ -116,7 +110,6 @@ export const getStockData = async (req:Request, res:Response)=>{
 
     const response = await axios.get(apiUrl);
 
-    // values we'll use to display the data
     const {symbol, ask, asize, bid, bsize, timestamp} = response.data;
 
     const formattedTimeStamp = new Date(timestamp).toLocaleString();

@@ -6,8 +6,9 @@ import email_icon from "../assets/email.png";
 import password_icon from "../assets/password.png";
 import axios from "axios";
 import "./LoginSignup.css";
+import { useNavigate } from "react-router-dom";
 
-export function Login ()  {
+export function Login ({ setIsAuthenticated }: { setIsAuthenticated: (auth: boolean) => void })  {
   const [action, setAction] = useState<"Login" | "Sign Up">("Login");
   const [userEmail, setEmail] = useState('');
   const [userName, setUsername] = useState('');
@@ -15,7 +16,7 @@ export function Login ()  {
 
   const [error, setError] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
-
+  const navigate =useNavigate();
 
 
   // Load saved data from local storage on component mount
@@ -43,10 +44,18 @@ export function Login ()  {
 
         const response = await axios.post(`http://localhost:5500/api/v1${endPoint}`, requestData);
 
-        console.log("Response:", response);
-        alert(`${action} successful`);
-        setError(null);
-        setValidationErrors([]);
+  
+        if(response.status === 200){
+          setError(null);
+          setValidationErrors([]);
+          if(action === "Login"){
+            setIsAuthenticated(true);
+            navigate("/dashboard");
+          }
+          
+        }
+    
+        
       }catch(err:any){
         if(err.response && err.response.status === 400){
           const errors = err.response.data.errors;

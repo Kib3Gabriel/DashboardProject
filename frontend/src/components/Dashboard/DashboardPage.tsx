@@ -1,6 +1,4 @@
 
-
-
 import  { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { BsArrowLeft, BsSearch, BsLightningFill } from "react-icons/bs";
@@ -10,15 +8,9 @@ import { GiNetworkBars } from "react-icons/gi";
 import { MdCurrencyExchange } from "react-icons/md";
 import { RefreshCw } from 'lucide-react';
 
-const mockPerformanceData = [
-  { date: 'Mon', value: 17500 },
-  { date: 'Tue', value: 17800 },
-  { date: 'Wed', value: 18200 },
-  { date: 'Thu', value: 17900 },
-  { date: 'Fri', value: 18500 },
-];
+import { mockPerformanceData, stockHoldings } from '../mock/mockData';
 
-const PortfolioDashboard = () => {
+const DashboardPage = () => {
   const [open, setOpen] = useState(true);
 
   const Menus = [
@@ -174,4 +166,4 @@ const PortfolioDashboard = () => {
   );
 };
 
-export default PortfolioDashboard;
+export default DashboardPage;

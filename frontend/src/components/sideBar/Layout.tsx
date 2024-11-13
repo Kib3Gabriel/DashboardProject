@@ -16,7 +16,6 @@
 // export default Layout;
 
 
-import React from 'react';
 import Sidebar from './SideBar';
 import { Outlet } from 'react-router-dom';
 

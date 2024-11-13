@@ -44,7 +44,7 @@ import DashboardPage from './components/Dashboard/DashboardPage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  
   return (
     <Router>
       <Routes>

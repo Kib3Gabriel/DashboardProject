@@ -1,290 +1,146 @@
-
-// import  { useState } from 'react';
-// import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-// import { BsArrowLeft, BsSearch, BsLightningFill } from "react-icons/bs";
-// import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from "react-icons/ri";
-// import { IoSettingsOutline } from "react-icons/io5";
-// import { GiNetworkBars } from "react-icons/gi";
-// import { MdCurrencyExchange } from "react-icons/md";
-// import { RefreshCw } from 'lucide-react';
-
-// import { mockPerformanceData } from '../mock/mockData';
-
-// const DashboardPage = () => {
-//   const [open, setOpen] = useState(true);
-
-//   const Menus = [
-//     { title: "Dashboard" },
-//     { title: "Market", icon: <GiNetworkBars /> },
-//     { title: "Exchange", icon: <MdCurrencyExchange /> },
-//     { title: "Setting", icon: <IoSettingsOutline /> },
-//     { title: "Logout", spacing: true, icon: <RiLogoutCircleRLine /> },
-//   ];
-
-//   return (
-//     <div className="flex min-h-screen bg-gray-50">
-//       {/* Sidebar */}
-//       <div
-//         className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${
-//           open ? "w-72" : "w-20"
-//         } duration-300 relative`}
-//       >
-//         <BsArrowLeft
-//           className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${
-//             !open && "rotate-180"
-//           }`}
-//           onClick={() => setOpen(!open)}
-//         />
-
-//         <div className="flex items-center w-full">
-//           <BsLightningFill
-//             className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${
-//               open && "rotate-[360deg]"
-//             }`}
-//           />
-//           <h1
-//             className={`text-white font-semibold text-2xl transition-all duration-300 ${
-//               !open && "hidden"
-//             }`}
-//           >
-//             Market Pulse
-//           </h1>
-//         </div>
-
-//         <div
-//           className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${
-//             open ? "px-4" : "px-2.5"
-//           }`}
-//         >
-//           <BsSearch className="text-white text-lg" />
-//           <input
-//             type="search"
-//             placeholder="Search"
-//             className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${
-//               !open && "hidden"
-//             }`}
-//           />
-//         </div>
-
-//         <ul className="pt-5 w-full">
-//           {Menus.map((menu, index) => (
-//             <li
-//               key={index}
-//               className={`flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all ${
-//                 menu.spacing ? "mt-20" : ""
-//               }`}
-//             >
-//               <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
-//                 {menu.icon ? menu.icon : <RiDashboardHorizontalFill />}
-//               </div>
-//               <span
-//                 className={`text-base font-medium text-white transition-all duration-300 ${
-//                   !open && "hidden"
-//                 }`}
-//               >
-//                 {menu.title}
-//               </span>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-
-//       {/* Main Content */}
-//       <div className="flex-1 p-8">
-//         <div className="max-w-6xl mx-auto">
-//           {/* Portfolio Summary */}
-//           <div className="bg-white rounded-xl p-6 shadow-sm mb-8">
-//             <div className="flex items-center justify-between mb-4">
-//               <h2 className="text-xl font-semibold">Portfolio Value</h2>
-//               <button className="p-2 hover:bg-gray-50 rounded-full">
-//                 <RefreshCw size={20} className="text-gray-500" />
-//               </button>
-//             </div>
-            
-//             <div className="flex items-baseline space-x-2 mb-4">
-//               <span className="text-3xl font-bold">$18,026.00</span>
-//               <span className="text-green-500 text-sm">+2.4%</span>
-//             </div>
-
-//             <div className="grid grid-cols-2 gap-4 mb-8">
-//               <div className="bg-gray-50 p-4 rounded-lg">
-//                 <div className="text-sm text-gray-500 mb-1">Total Profit</div>
-//                 <div className="text-lg font-semibold">$8,456.89</div>
-//               </div>
-//               <div className="bg-gray-50 p-4 rounded-lg">
-//                 <div className="text-sm text-gray-500 mb-1">Best Performer</div>
-//                 <div className="text-lg font-semibold text-green-500">+$2,987.00</div>
-//               </div>
-//             </div>
-
-//             {/* Chart */}
-//             <div className="h-64">
-//               <ResponsiveContainer width="100%" height="100%">
-//                 <LineChart data={mockPerformanceData}>
-//                   <XAxis dataKey="date" />
-//                   <YAxis />
-//                   <Tooltip />
-//                   <Line
-//                     type="monotone"
-//                     dataKey="value"
-//                     stroke="#2563eb"
-//                     strokeWidth={2}
-//                     dot={false}
-//                   />
-//                 </LineChart>
-//               </ResponsiveContainer>
-//             </div>
-//           </div>
-
-//           {/* Holdings Grid */}
-//           <div className="grid grid-cols-3 gap-4">
-//             {[
-//               { symbol: 'AAPL', name: 'Apple Inc', value: 1232.00, change: -0.12 },
-//               { symbol: 'PYPL', name: 'PayPal Inc', value: 965.00, change: 1.24 },
-//               { symbol: 'AMZN', name: 'Amazon.com Inc', value: 2567.99, change: 0.01 }
-//             ].map((stock) => (
-//               <div key={stock.symbol} className="bg-white p-4 rounded-xl shadow-sm">
-//                 <div className="flex items-center space-x-2 mb-2">
-//                   <div className="w-8 h-8 bg-gray-100 rounded-full" />
-//                   <div>
-//                     <div className="font-medium">{stock.symbol}</div>
-//                     <div className="text-sm text-gray-500">{stock.name}</div>
-//                   </div>
-//                 </div>
-//                 <div className="flex items-baseline justify-between">
-//                   <span className="text-lg font-semibold">${stock.value}</span>
-//                   <span className={stock.change >= 0 ? 'text-green-500' : 'text-red-500'}>
-//                     {stock.change >= 0 ? '+' : ''}{stock.change}%
-//                   </span>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DashboardPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { BsArrowLeft, BsSearch, BsLightningFill } from "react-icons/bs";
-import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
-import { GiNetworkBars } from "react-icons/gi";
-import { MdCurrencyExchange } from "react-icons/md";
-import { RefreshCw } from 'lucide-react';
-import { mockPerformanceData } from '../mock/mockData';
+import { MoreVertical, Copy } from 'lucide-react';
+import Sidebar from '../sideBar/SideBar';
+import {
+  portfolioValue,
+  allTimeProfit,
+  bestPerformer,
+  stocks,
+  chartData,
+  transactions,
+  futures,
+} from '../mock/mockData';
 
-const DashboardPage = () => {
-  const [open, setOpen] = useState(true);
+const Panel = ({ children, className = "" }:{ children: ReactNode; className?: string }) => (
+  <div className={`bg-white rounded-lg border border-gray-200 shadow-sm ${className}`}>
+    {children}
+  </div>
+);
 
-  const Menus = [
-    { title: "Dashboard" },
-    { title: "Market", icon: <GiNetworkBars /> },
-    { title: "Exchange", icon: <MdCurrencyExchange /> },
-    { title: "Setting", icon: <IoSettingsOutline /> },
-    { title: "Logout", spacing: true, icon: <RiLogoutCircleRLine /> },
-  ];
-
+const Dashboard = () => {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <div
-        className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${open ? "w-72" : "w-20"} duration-300 relative`}
-      >
-        <BsArrowLeft
-          className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${!open && "rotate-180"}`}
-          onClick={() => setOpen(!open)}
-        />
-
-        <div className="flex items-center w-full">
-          <BsLightningFill
-            className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${open && "rotate-[360deg]"}`}
-          />
-          <h1 className={`text-white font-semibold text-2xl transition-all duration-300 ${!open && "hidden"}`}>
-            Market Pulse
-          </h1>
-        </div>
-
-        <div className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${open ? "px-4" : "px-2.5"}`}>
-          <BsSearch className="text-white text-lg" />
-          <input
-            type="search"
-            placeholder="Search"
-            className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${!open && "hidden"}`}
-          />
-        </div>
-
-        <ul className="pt-5 w-full">
-          {Menus.map((menu, index) => (
-            <li
-              key={index}
-              className={`flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all ${menu.spacing ? "mt-20" : ""}`}
-            >
-              <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
-                {menu.icon ? menu.icon : <RiDashboardHorizontalFill />}
-              </div>
-              <span className={`text-base font-medium text-white transition-all duration-300 ${!open && "hidden"}`}>
-                {menu.title}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Sidebar />
 
       {/* Main Content */}
       <div className="flex-1 p-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Portfolio Summary */}
-          <div className="bg-white rounded-xl p-6 shadow-sm mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold">Portfolio Value</h2>
-              <button className="p-2 hover:bg-gray-50 rounded-full">
-                <RefreshCw size={20} className="text-gray-500" />
-              </button>
-            </div>
-            <div className="flex items-baseline space-x-2 mb-4">
-              <span className="text-3xl font-bold">$18,026.00</span>
-              <span className="text-green-500 text-sm">+2.4%</span>
-            </div>
-
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={mockPerformanceData}>
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="value" stroke="#2563eb" strokeWidth={2} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex-1 mx-4">
+            <input
+              type="text"
+              placeholder="Search for news, symbol, or companies"
+              className="w-full p-3 rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
+        </div>
+
+        {/* Portfolio Section */}
+        <div className="grid grid-cols-2 gap-8 mb-8">
+          <Panel>
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <div className="text-gray-600">Portfolio value</div>
+                <button className="hover:bg-gray-100 p-1 rounded">
+                  <MoreVertical className="w-5 h-5 text-gray-400" />
+                </button>
+              </div>
+              <div className="flex items-center mb-4">
+                <div className="text-3xl font-bold">{portfolioValue}</div>
+                <button className="ml-2 hover:bg-gray-100 p-1 rounded">
+                  <Copy className="w-4 h-4 text-gray-400" />
+                </button>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-sm text-gray-500">All time profit</div>
+                  <div className="text-lg font-semibold text-green-500">{allTimeProfit}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-500">Best performer</div>
+                  <div className="text-lg font-semibold text-green-500">{bestPerformer}</div>
+                </div>
+              </div>
+            </div>
+          </Panel>
+
+          <Panel>
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <div className="text-gray-600">Your Portfolio</div>
+                <button className="hover:bg-gray-100 p-1 rounded">
+                  <MoreVertical className="w-5 h-5 text-gray-400" />
+                </button>
+              </div>
+              <div className="space-y-4">
+                {stocks.map((stock) => (
+                  <div key={stock.symbol} className="flex justify-between items-center">
+                    <div className="flex items-center">
+                      <span className="text-2xl mr-2">{stock.logo}</span>
+                      <div>
+                        <div className="text-sm font-semibold">{stock.name}</div>
+                        <div className="text-xs text-gray-500">{stock.symbol}</div>
+                      </div>
+                    </div>
+                    <div className="text-sm font-semibold">{stock.price}</div>
+                    <div className={`text-sm ${stock.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                      {stock.change > 0 ? '+' : ''}
+                      {stock.change}%
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Panel>
+        </div>
+
+        {/* Line Chart */}
+        <Panel className="p-6 mb-8">
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={chartData}>
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Line type="monotone" dataKey="value" stroke="#4f46e5" strokeWidth={2} />
+            </LineChart>
+          </ResponsiveContainer>
+        </Panel>
+
+        {/* Transactions and Futures */}
+        <div className="grid grid-cols-2 gap-8">
+          <Panel className="p-6">
+            <div className="mb-4 font-semibold">Recent Transactions</div>
+            {transactions.map((transaction) => (
+              <div key={transaction.type} className="mb-4">
+                <div className="text-sm">{transaction.type}</div>
+                <div className="text-xs text-gray-500">{transaction.date}</div>
+                <div className="text-sm font-semibold text-green-500">{transaction.price}</div>
+              </div>
+            ))}
+          </Panel>
+
+          <Panel className="p-6">
+            <div className="mb-4 font-semibold">Futures</div>
+            {futures.map((future) => (
+              <div key={future.name} className="flex justify-between items-center mb-4">
+                <div>
+                  <div className="text-sm font-semibold">{future.name}</div>
+                  <div className="text-xs text-gray-500">{future.index}</div>
+                </div>
+                <div className="text-sm font-semibold">{future.price}</div>
+                <div className={`text-sm ${future.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                  {future.change >= 0 ? '+' : ''}
+                  {future.change}
+                </div>
+              </div>
+            ))}
+          </Panel>
         </div>
       </div>
     </div>
   );
 };
 
-export default DashboardPage;
+export default Dashboard;

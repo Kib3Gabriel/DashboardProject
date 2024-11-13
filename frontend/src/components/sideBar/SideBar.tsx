@@ -1,20 +1,19 @@
 
-import { useState } from "react";
-import { BsArrowLeft, BsSearch, BsLightningFill } from "react-icons/bs";
-import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
-import { GiNetworkBars } from "react-icons/gi";
-import { MdCurrencyExchange } from "react-icons/md";
+import React, { useState } from 'react';
+import { BsArrowLeft, BsSearch, BsLightningFill } from 'react-icons/bs';
+import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from 'react-icons/ri';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { GiNetworkBars } from 'react-icons/gi';
+import { MdCurrencyExchange } from 'react-icons/md';
 
-function SideBar() {
+const Sidebar = () => {
   const [open, setOpen] = useState(true);
 
   const Menus = [
-    { title: "Dashboard" },
+    { title: "Dashboard", icon: <RiDashboardHorizontalFill /> },
     { title: "Market", icon: <GiNetworkBars /> },
     { title: "Exchange", icon: <MdCurrencyExchange /> },
     { title: "Setting", icon: <IoSettingsOutline /> },
-    { title: "Logout", spacing: true, icon: <RiLogoutCircleRLine /> }, // Added icon for Logout
   ];
 
   return (
@@ -26,7 +25,7 @@ function SideBar() {
       >
         {/* Toggle Button */}
         <BsArrowLeft
-          className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${
+          className={`bg-white text-indigo-600 text-3xl rounded-full absolute -right-3 top-9 border border-indigo cursor-pointer ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
@@ -64,36 +63,47 @@ function SideBar() {
           />
         </div>
 
-        {/* Menu Items */}
-        <ul className="pt-4 w-full">
-          {Menus.map((menu, index) => (
-            <li
-              key={index}
-              className={`flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-indigo-700 transition-all ${
-                menu.spacing ? "mt-12" : ""
-              }`}
-            >
-              <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
-                {menu.icon ? menu.icon : <RiDashboardHorizontalFill />}
-              </div>
-              <span
-                className={`text-base font-medium text-white transition-all duration-300 ${
-                  !open && "hidden"
-                }`}
+        {/* Menu */}
+        <div className="flex-grow w-full mt-4"> 
+          <ul className="w-full">
+            {Menus.map((menu, index) => (
+              <li
+                key={index}
+                className="flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all"
               >
-                {menu.title}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+                <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+                  {menu.icon}
+                </div>
+                <span
+                  className={`text-base font-medium text-white transition-all duration-300 ${
+                    !open && "hidden"
+                  }`}
+                >
+                  {menu.title}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Main Content */}
-      <div className="p-7 w-full">
-        <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+        
+        <li
+          className="flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-slate-400 transition-all w-full "
+        >
+          <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+            <RiLogoutCircleRLine />
+          </div>
+          <span
+            className={`text-base font-medium text-white transition-all duration-300 ${
+              !open && "hidden"
+            }`}
+          >
+            Logout
+          </span>
+        </li>
       </div>
     </div>
   );
-}
+};
 
-export default SideBar;
+export default Sidebar;

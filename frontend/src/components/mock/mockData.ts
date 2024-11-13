@@ -18,6 +18,18 @@ export const chartData = [
   { day: 'Sat', value: 18026 },
 ];
 
+
+export const barChartData = [
+  { day: 'Sun', value: 5000 },
+  { day: 'Mon', value: 4700 },
+  { day: 'Tue', value: 5100 },
+  { day: 'Wed', value: 5200 },
+  { day: 'Thu', value: 5400 },
+  { day: 'Fri', value: 5400 },
+  { day: 'Sat', value: 5400 },
+];
+
+
 export const transactions = [
   { type: 'Bought AMZN', date: 'Nov 23, 01:00 PM', status: 'Success', price: '$2,567.88' },
   { type: 'Deposit', date: 'Nov 22, 10:34 AM', status: 'Success', price: '$5,874.00' },

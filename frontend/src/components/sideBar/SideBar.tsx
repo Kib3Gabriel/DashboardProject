@@ -1,99 +1,442 @@
 
-import { useState } from "react";
-import { BsArrowLeft, BsSearch, BsLightningFill } from "react-icons/bs";
-import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
-import { GiNetworkBars } from "react-icons/gi";
-import { MdCurrencyExchange } from "react-icons/md";
+// import { useState } from 'react';
+// import { BsArrowLeft, BsSearch, BsLightningFill } from 'react-icons/bs';
+// import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from 'react-icons/ri';
+// import { IoSettingsOutline } from 'react-icons/io5';
+// import { GiNetworkBars } from 'react-icons/gi';
+// import { MdCurrencyExchange } from 'react-icons/md';
 
-function SideBar() {
+// const Sidebar = () => {
+//   const [open, setOpen] = useState(true);
+
+//   const Menus = [
+//     { title: "Dashboard", icon: <RiDashboardHorizontalFill /> },
+//     { title: "Market", icon: <GiNetworkBars /> },
+//     { title: "Exchange", icon: <MdCurrencyExchange /> },
+//     { title: "Setting", icon: <IoSettingsOutline /> },
+//   ];
+
+//   return (
+//     <div className="flex">
+//       <div
+//         className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${
+//           open ? "w-72" : "w-20"
+//         } duration-300 relative`}
+//       >
+        
+//         <BsArrowLeft
+//           className={`bg-white text-indigo-600 text-3xl rounded-full absolute -right-3 top-9 border border-indigo cursor-pointer ${
+//             !open && "rotate-180"
+//           }`}
+//           onClick={() => setOpen(!open)}
+//         />
+
+        
+//         <div className="flex items-center w-full">
+//           <BsLightningFill
+//             className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${
+//               open && "rotate-[360deg]"
+//             }`}
+//           />
+//           <h1
+//             className={`text-white font-semibold text-2xl transition-all duration-300 ${
+//               !open && "hidden"
+//             }`}
+//           >
+//             Market Pulse
+//           </h1>
+//         </div>
+
+        
+//         <div
+//           className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${
+//             open ? "px-4" : "px-2.5"
+//           }`}
+//         >
+//           <BsSearch className="text-white text-lg" />
+//           <input
+//             type="search"
+//             placeholder="Search"
+//             className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${
+//               !open && "hidden"
+//             }`}
+//           />
+//         </div>
+
+//         {/* Menu */}
+//         <div className="flex-grow w-full mt-4"> 
+//           <ul className="w-full">
+//             {Menus.map((menu, index) => (
+//               <li
+//                 key={index}
+//                 className="flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all"
+//               >
+//                 <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+//                   {menu.icon}
+//                 </div>
+//                 <span
+//                   className={`text-base font-medium text-white transition-all duration-300 ${
+//                     !open && "hidden"
+//                   }`}
+//                 >
+//                   {menu.title}
+//                 </span>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+
+        
+//         <li
+//           className="flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-slate-400 transition-all w-full "
+//         >
+//           <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+//             <RiLogoutCircleRLine />
+//           </div>
+//           <span
+//             className={`text-base font-medium text-white transition-all duration-300 ${
+//               !open && "hidden"
+//             }`}
+//           >
+//             Logout
+//           </span>
+//         </li>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Sidebar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //Attemp2
+
+
+// import { useState } from 'react';
+// import { BsArrowLeft, BsSearch, BsLightningFill } from 'react-icons/bs';
+// import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from 'react-icons/ri';
+// import { IoSettingsOutline } from 'react-icons/io5';
+// import { GiNetworkBars } from 'react-icons/gi';
+// import { MdCurrencyExchange } from 'react-icons/md';
+// import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+
+// const Sidebar = () => {
+//   const [open, setOpen] = useState(true);
+
+//   const Menus = [
+//     { title: "Dashboard", icon: <RiDashboardHorizontalFill />, path: "/dashboard" },
+//     { title: "Market", icon: <GiNetworkBars />, path: "/market" },
+//     { title: "Exchange", icon: <MdCurrencyExchange />, path: "/exchange" },
+//     { title: "Setting", icon: <IoSettingsOutline />, path: "/settings" },
+//   ];
+
+//   return (
+//     <div className="flex">
+//       <div
+//         className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${
+//           open ? "w-72" : "w-20"
+//         } duration-300 relative`}
+//       >
+//         <BsArrowLeft
+//           className={`bg-white text-indigo-600 text-3xl rounded-full absolute -right-3 top-9 border border-indigo cursor-pointer ${
+//             !open && "rotate-180"
+//           }`}
+//           onClick={() => setOpen(!open)}
+//         />
+
+//         <div className="flex items-center w-full">
+//           <BsLightningFill
+//             className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${
+//               open && "rotate-[360deg]"
+//             }`}
+//           />
+//           <h1
+//             className={`text-white font-semibold text-2xl transition-all duration-300 ${
+//               !open && "hidden"
+//             }`}
+//           >
+//             Market Pulse
+//           </h1>
+//         </div>
+
+//         <div
+//           className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${
+//             open ? "px-4" : "px-2.5"
+//           }`}
+//         >
+//           <BsSearch className="text-white text-lg" />
+//           <input
+//             type="search"
+//             placeholder="Search"
+//             className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${
+//               !open && "hidden"
+//             }`}
+//           />
+//         </div>
+
+//         {/* Menu */}
+//         <div className="flex-grow w-full mt-4"> 
+//           <ul className="w-full">
+//             {Menus.map((menu, index) => (
+//               <Link to={menu.path} key={index}>
+//                 <li
+//                   className="flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all"
+//                 >
+//                   <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+//                     {menu.icon}
+//                   </div>
+//                   <span
+//                     className={`text-base font-medium text-white transition-all duration-300 ${
+//                       !open && "hidden"
+//                     }`}
+//                   >
+//                     {menu.title}
+//                   </span>
+//                 </li>
+//               </Link>
+//             ))}
+//           </ul>
+//         </div>
+
+//         <li
+//           className="flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-slate-400 transition-all w-full "
+//         >
+//           <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+//             <RiLogoutCircleRLine />
+//           </div>
+//           <span
+//             className={`text-base font-medium text-white transition-all duration-300 ${
+//               !open && "hidden"
+//             }`}
+//           >
+//             Logout
+//           </span>
+//         </li>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Sidebar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //Attemp3
+// import { useState } from 'react';
+// import { NavLink } from 'react-router-dom';
+// import { BsArrowLeft, BsSearch, BsLightningFill } from 'react-icons/bs';
+// import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from 'react-icons/ri';
+// import { IoSettingsOutline } from 'react-icons/io5';
+// import { GiNetworkBars } from 'react-icons/gi';
+// import { MdCurrencyExchange } from 'react-icons/md';
+
+// const Sidebar = () => {
+//   const [open, setOpen] = useState(true);
+
+//   const Menus = [
+//     { title: "Dashboard", icon: <RiDashboardHorizontalFill />, path: "/dashboard" },
+//     { title: "Market", icon: <GiNetworkBars />, path: "/market" },
+//     { title: "Exchange", icon: <MdCurrencyExchange />, path: "/exchange" },
+//     { title: "Setting", icon: <IoSettingsOutline />, path: "/settings" },
+//   ];
+
+//   return (
+//     <div className="flex">
+//       <div
+//         className={`bg-indigo min-h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${
+//           open ? "w-72" : "w-20"
+//         } duration-300 relative`}
+//       >
+//         <BsArrowLeft
+//           className={`bg-white text-indigo-600 text-3xl rounded-full absolute -right-3 top-9 border border-indigo cursor-pointer ${
+//             !open && "rotate-180"
+//           }`}
+//           onClick={() => setOpen(!open)}
+//         />
+
+//         <div className="flex items-center w-full">
+//           <BsLightningFill
+//             className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${
+//               open && "rotate-[360deg]"
+//             }`}
+//           />
+//           <h1
+//             className={`text-white font-semibold text-2xl transition-all duration-300 ${
+//               !open && "hidden"
+//             }`}
+//           >
+//             Market Pulse
+//           </h1>
+//         </div>
+
+//         <div
+//           className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${
+//             open ? "px-4" : "px-2.5"
+//           }`}
+//         >
+//           <BsSearch className="text-white text-lg" />
+//           <input
+//             type="search"
+//             placeholder="Search"
+//             className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${
+//               !open && "hidden"
+//             }`}
+//           />
+//         </div>
+
+//         {/* Menu */}
+//         <div className="flex-grow w-full mt-4">
+//           <ul className="w-full">
+//             {Menus.map((menu, index) => (
+//               <NavLink
+//                 key={index}
+//                 to={menu.path}
+//                 className="flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all"
+//               >
+//                 <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+//                   {menu.icon}
+//                 </div>
+//                 <span
+//                   className={`text-base font-medium text-white transition-all duration-300 ${
+//                     !open && "hidden"
+//                   }`}
+//                 >
+//                   {menu.title}
+//                 </span>
+//               </NavLink>
+//             ))}
+//           </ul>
+//         </div>
+
+//         <li
+//           className="flex items-center gap-3 p-3 rounded-lg mb-10 cursor-pointer hover:bg-slate-400 transition-all w-full"
+//         >
+//           <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+//             <RiLogoutCircleRLine />
+//           </div>
+//           <span
+//             className={`text-base font-medium text-white transition-all duration-300 ${
+//               !open && "hidden"
+//             }`}
+//           >
+//             Logout
+//           </span>
+//         </li>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Sidebar;
+
+
+
+
+// with Logout
+import { useState } from 'react';
+import { BsArrowLeft, BsSearch, BsLightningFill } from 'react-icons/bs';
+import { RiDashboardHorizontalFill, RiLogoutCircleRLine } from 'react-icons/ri';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { GiNetworkBars } from 'react-icons/gi';
+import { MdCurrencyExchange } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+
+const Sidebar = ({ handleLogout }: { handleLogout: () => void }) => {
   const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
 
   const Menus = [
-    { title: "Dashboard" },
-    { title: "Market", icon: <GiNetworkBars /> },
-    { title: "Exchange", icon: <MdCurrencyExchange /> },
-    { title: "Setting", icon: <IoSettingsOutline /> },
-    { title: "Logout", spacing: true, icon: <RiLogoutCircleRLine /> }, // Added icon for Logout
+    { title: "Dashboard", icon: <RiDashboardHorizontalFill />, path: "/dashboard" },
+    { title: "Market", icon: <GiNetworkBars />, path: "/market" },
+    { title: "Exchange", icon: <MdCurrencyExchange />, path: "/exchange" },
+    { title: "Setting", icon: <IoSettingsOutline />, path: "/settings" },
   ];
 
   return (
     <div className="flex">
-      <div
-        className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${
-          open ? "w-72" : "w-20"
-        } duration-300 relative`}
-      >
-        {/* Toggle Button */}
+      <div className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${open ? "w-72" : "w-20"} duration-300 relative`}>
+        
         <BsArrowLeft
-          className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${
-            !open && "rotate-180"
-          }`}
+          className={`bg-white text-indigo-600 text-3xl rounded-full absolute -right-3 top-9 border border-indigo cursor-pointer ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
 
-        {/* Sidebar Logo and Title */}
         <div className="flex items-center w-full">
-          <BsLightningFill
-            className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${
-              open && "rotate-[360deg]"
-            }`}
-          />
-          <h1
-            className={`text-white font-semibold text-2xl transition-all duration-300 ${
-              !open && "hidden"
-            }`}
-          >
-            Market Pulse
-          </h1>
+          <BsLightningFill className={`bg-amber-300 text-4xl rounded-full cursor-pointer mr-2 duration-500 ${open && "rotate-[360deg]"}`} />
+          <h1 className={`text-white font-semibold text-2xl transition-all duration-300 ${!open && "hidden"}`}>Market Pulse</h1>
         </div>
 
-        {/* Search Bar */}
-        <div
-          className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${
-            open ? "px-4" : "px-2.5"
-          }`}
-        >
+        <div className={`flex items-center bg-gray-700 rounded-md mt-6 w-full p-2 ${open ? "px-4" : "px-2.5"}`}>
           <BsSearch className="text-white text-lg" />
           <input
             type="search"
             placeholder="Search"
-            className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${
-              !open && "hidden"
-            }`}
+            className={`ml-2 bg-transparent text-white placeholder-gray-300 focus:outline-none w-full ${!open && "hidden"}`}
           />
         </div>
 
-        {/* Menu Items */}
-        <ul className="pt-4 w-full">
-          {Menus.map((menu, index) => (
-            <li
-              key={index}
-              className={`flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-indigo-700 transition-all ${
-                menu.spacing ? "mt-12" : ""
-              }`}
-            >
-              <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
-                {menu.icon ? menu.icon : <RiDashboardHorizontalFill />}
-              </div>
-              <span
-                className={`text-base font-medium text-white transition-all duration-300 ${
-                  !open && "hidden"
-                }`}
+        <div className="flex-grow w-full mt-4"> 
+          <ul className="w-full">
+            {Menus.map((menu, index) => (
+              <li
+                key={index}
+                onClick={() => navigate(menu.path)}
+                className="flex items-center gap-3 p-3 mt-2 rounded-lg cursor-pointer hover:bg-slate-400 transition-all"
               >
-                {menu.title}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+                <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+                  {menu.icon}
+                </div>
+                <span className={`text-base font-medium text-white transition-all duration-300 ${!open && "hidden"}`}>
+                  {menu.title}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Main Content */}
-      <div className="p-7 w-full">
-        <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+        <li
+          onClick={handleLogout}
+          className="flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-slate-400 transition-all w-full "
+        >
+          <div className="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-lg">
+            <RiLogoutCircleRLine />
+          </div>
+          <span className={`text-base font-medium text-white transition-all duration-300 ${!open && "hidden"}`}>
+            Logout
+          </span>
+        </li>
       </div>
     </div>
   );
-}
+};
 
-export default SideBar;
+export default Sidebar;

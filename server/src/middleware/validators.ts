@@ -23,22 +23,22 @@ export const userRegistrationValidator:RequestHandler[] = [
     body('email')
         .notEmpty()
         .withMessage('Email is required')
-        .isEmail()
-        .withMessage('Email must be valid')
+        // .isEmail()
+        // .withMessage('Email must be valid')
         .normalizeEmail(),    //Normalize email to lowercase
     body('password')
         .notEmpty()
         .withMessage('Password is required')
-        .isLength({ min: 6 })
-        .withMessage('Password must be at least 6 characters long')
-        .matches(/[a-z]/)
-        .withMessage('Password must contain at least one lowercase letter')
-        .matches(/[A-Z]/)
-        .withMessage('Password must contain at least one uppercase letter')
-        .matches(/\d/)
-        .withMessage('Password must contain at least one number')
-        .matches(/[@$!%*?&]/)
-        .withMessage('Password must contain at least one special character'),
+        .isLength({ min: 6 }),
+        // .withMessage('Password must be at least 6 characters long'),
+        // .matches(/[a-z]/)
+        // .withMessage('Password must contain at least one lowercase letter')
+        // .matches(/[A-Z]/)
+        // .withMessage('Password must contain at least one uppercase letter')
+        // .matches(/\d/)
+        // .withMessage('Password must contain at least one number')
+        // .matches(/[@$!%*?&]/)
+        // .withMessage('Password must contain at least one special character'),
     validate
 ];
 
@@ -47,21 +47,21 @@ export const userLoginValidator = [
     body('email')
         .notEmpty()
         .withMessage('Email is required')
-        .isEmail()
-        .withMessage('Email must be valid')
+        // .isEmail()
+        // .withMessage('Email must be valid')
         .normalizeEmail(),
     body('password')
     .notEmpty()
     .withMessage('Password is required')
     .isLength({ min: 6 })
-    .withMessage('Password must be at least 6 characters long')
-    .matches(/[a-z]/)
-    .withMessage('Password must contain at least one lowercase letter')
-    .matches(/[A-Z]/)
-    .withMessage('Password must contain at least one uppercase letter')
-    .matches(/\d/)
-    .withMessage('Password must contain at least one number')
-    .matches(/[@$!%*?&]/)
-    .withMessage('Password must contain at least one special character'),
+    .withMessage('Password must be at least 6 characters long'),
+    // .matches(/[a-z]/)
+    // .withMessage('Password must contain at least one lowercase letter')
+    // .matches(/[A-Z]/)
+    // .withMessage('Password must contain at least one uppercase letter')
+    // .matches(/\d/)
+    // .withMessage('Password must contain at least one number')
+    // .matches(/[@$!%*?&]/)
+    // .withMessage('Password must contain at least one special character'),
     validate
 ];

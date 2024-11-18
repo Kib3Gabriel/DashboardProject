@@ -1,5 +1,3 @@
-// //btn click error gone
-
 
 // import { useEffect, useState } from "react";
 // import user_icon from "../assets/person.png";
@@ -39,6 +37,13 @@
 //   }, []);
 
 //   const handleSubmit = async () => {
+//     // Check if all fields are empty
+//     if (!userEmail && !userPassword && (action === "Login" || !userName)) {
+//       setError("Fill the fields");
+//       setValidationErrors([]);
+//       return; // Exit early if fields are empty
+//     }
+
 //     setError(null); // Clear previous errors
 //     setValidationErrors([]); // Clear previous validation errors
 
@@ -163,6 +168,8 @@
 
 
 
+
+
 import { useEffect, useState } from "react";
 import user_icon from "../assets/person.png";
 import email_icon from "../assets/email.png";
@@ -201,11 +208,11 @@ export function Login({
   }, []);
 
   const handleSubmit = async () => {
-    // Check if all fields are empty
+    
     if (!userEmail && !userPassword && (action === "Login" || !userName)) {
       setError("Fill the fields");
       setValidationErrors([]);
-      return; // Exit early if fields are empty
+      return;
     }
 
     setError(null); // Clear previous errors
@@ -226,7 +233,12 @@ export function Login({
       if (response.status === 200) {
         setError(null);
         setValidationErrors([]);
-        if (action === "Login") {
+
+        if (action === "Sign Up") {
+          alert("Registration successful! Please log in.");
+          setAction("Login"); 
+        } else {
+          alert("Login successful! Redirecting to the dashboard.");
           setIsAuthenticated(true);
           navigate("/dashboard");
         }

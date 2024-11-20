@@ -4,7 +4,7 @@ import Layout from '../sideBar/Layout'
 import DashboardPage from '../Dashboard/DashboardPage';
 import MarketPage from '../sideBar/MarketPage';
 import ExchangePage from '../sideBar/ExchangePage';
-import SettingsPage from '../sideBar/SettingsPage';
+import SettingsPage from '../sideBar/ProfilePage';
 
 interface RoutesProps {
   isAuthenticated: boolean;

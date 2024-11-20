@@ -32,7 +32,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
 
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findUnique({ where: { email }, });
     if (!user || !(await bcrypt.compare(password, user.password))) {
       res.status(400).json({ message: 'Invalid credentials' });
       return;
@@ -81,6 +81,11 @@ export const deleteUserById = async (req:Request, res:Response) =>{
     }
   }
 }
+
+
+
+
+
 
 
 //Testing Stock APIS

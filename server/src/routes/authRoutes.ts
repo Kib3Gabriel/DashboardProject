@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { register, login, getAllUsers, deleteUserById, checkAPI, getStockData } from '../controllers/authController';
+import { register, login, getAllUsers, deleteUserById, checkAPI, getStockData, getProfile} from '../controllers/authController';
 import { userRegistrationValidator, userLoginValidator } from '../middleware/validators';
 import {authenticateToken} from '../middleware/auth';
 
@@ -12,6 +12,9 @@ router.post('/delete/:id',authenticateToken, deleteUserById);
 
 router.get('/check', checkAPI);
 router.get('/getData', getStockData)
+
+// New endpoint for fetching profile
+router.get("/profile", authenticateToken, getProfile);
 
 
 export default router;

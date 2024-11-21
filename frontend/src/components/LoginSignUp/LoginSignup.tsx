@@ -64,6 +64,9 @@ export function Login({
           alert("Registration successful! Please log in.");
           setAction("Login");
         } else {
+          const {token} = response.data;
+          localStorage.setItem("authToken", token);
+          
           alert("Login successful! Redirecting to the dashboard.");
           setIsAuthenticated(true);
           navigate("/dashboard");

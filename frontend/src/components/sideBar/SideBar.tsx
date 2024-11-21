@@ -15,7 +15,7 @@ const Sidebar = ({ handleLogout }: { handleLogout: () => void }) => {
     { title: "Dashboard", icon: <RiDashboardHorizontalFill />, path: "/dashboard" },
     { title: "Market", icon: <GiNetworkBars />, path: "/market" },
     { title: "Exchange", icon: <MdCurrencyExchange />, path: "/exchange" },
-    { title: "Profile", icon: <IoSettingsOutline />, path: "/settings" },
+    { title: "Profile", icon: <IoSettingsOutline />, path: "/profile" },
   ];
 
   return (

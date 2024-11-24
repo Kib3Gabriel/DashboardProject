@@ -4,7 +4,7 @@ import Layout from '../sideBar/Layout'
 import DashboardPage from '../Dashboard/DashboardPage';
 import MarketPage from '../sideBar/MarketPage';
 import ExchangePage from '../sideBar/ExchangePage';
-import SettingsPage from '../sideBar/SettingsPage';
+import ProfilePage from '../sideBar/ProfilePage';
 
 interface RoutesProps {
   isAuthenticated: boolean;
@@ -43,7 +43,7 @@ const AppRoutes = ({ isAuthenticated, handleLogout, setIsAuthenticated }: Routes
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/market" element={<MarketPage />} />
           <Route path="/exchange" element={<ExchangePage />} />
-          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
       )}
 

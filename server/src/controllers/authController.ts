@@ -32,7 +32,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
 
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findUnique({ where: { email }, });
     if (!user || !(await bcrypt.compare(password, user.password))) {
       res.status(400).json({ message: 'Invalid credentials' });
       return;
@@ -81,6 +81,11 @@ export const deleteUserById = async (req:Request, res:Response) =>{
     }
   }
 }
+
+
+
+
+
 
 
 //Testing Stock APIS
@@ -132,3 +137,47 @@ export const getStockData = async (req:Request, res:Response)=>{
 export const checkServerRunning = async(req:Request, res:Response) =>{
   res.send('Server running ...👍👍')
 }
+
+
+
+// export const getProfile = async (req: Request, res: Response): Promise<void> => {
+//   try {
+//     // Get the token from cookies
+//     const token = req.cookies.token;
+//     if (!token) {
+//       res.status(401).json({ message: "No token provided" });
+//       return;
+//     }
+
+//     // Decode the token to get the user's ID
+//     const secretToken = process.env.JWT_SECRET;
+//     if (!secretToken) {
+//       res.status(500).json({ message: "Server error: JWT_SECRET is not configured" });
+//       return;
+//     }
+
+//     const decoded = jwt.verify(token, secretToken) as { id: string };
+//     const userId = parseInt(decoded.id, 10); // Convert string to number
+
+//     if (isNaN(userId)) {
+//       res.status(400).json({ message: "Invalid user ID" });
+//       return;
+//     }
+
+//     // Fetch the user's details from the database
+//     const user = await prisma.user.findUnique({
+//       where: { id: userId },
+//       select: { id: true, username: true, email: true }, // Only select necessary fields
+//     });
+
+//     if (!user) {
+//       res.status(404).json({ message: "User not found" });
+//       return;
+//     }
+
+//     res.status(200).json(user);
+//   } catch (error) {
+//     console.error("Error fetching user profile:", error);
+//     res.status(500).json({ message: "Error fetching user profile", error });
+//   }
+// };

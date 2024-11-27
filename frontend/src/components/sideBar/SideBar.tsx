@@ -20,7 +20,7 @@ const Sidebar = ({ handleLogout }: { handleLogout: () => void }) => {
 
   return (
     <div className="flex">
-      <div className={`bg-indigo h-screen p-5 pt-8 flex flex-col items-center shadow-lg ${open ? "w-72" : "w-20"} duration-300 relative`}>
+      <div className={`bg-indigo h-full p-5 pt-8 flex flex-col items-center shadow-lg ${open ? "w-72" : "w-20"} duration-300 relative`}>
         
         <BsArrowLeft
           className={`bg-white text-indigo-600 text-3xl rounded-full absolute -right-3 top-9 border border-indigo cursor-pointer ${!open && "rotate-180"}`}

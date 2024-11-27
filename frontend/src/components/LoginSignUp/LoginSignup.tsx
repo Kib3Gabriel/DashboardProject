@@ -52,7 +52,7 @@ export function Login({
           : { email: userEmail, password: userPassword };
 
       const response = await axios.post(
-        `http://localhost:5500/api/v1${endPoint}`,
+        `http://localhost:5400/api/v1${endPoint}`,
         requestData
       );
 

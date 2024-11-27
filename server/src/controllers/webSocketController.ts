@@ -1,18 +1,28 @@
-export const handleStockUpdates = (io: any) => {
-    // Simulate stock updates
-    setInterval(() => {
+import { Server } from 'socket.io';
+import 'colors';
+
+export const handleStockUpdates = (io: Server) => {
+  console.log('WebSocket server initialized'.green);
+
+  io.on('connection', (socket) => {
+    console.log(`Client connected: ${socket.id}`.green);
+    socket.emit('status', { message: 'WebSocket connected successfully' });
+
+    const interval = setInterval(() => {
       const stockUpdate = {
         symbol: 'AAPL',
         price: (Math.random() * 100).toFixed(2),
         timestamp: new Date().toISOString(),
       };
-  
-      io.emit('stockUpdate', stockUpdate);
-      // console.log('Broadcasting stock update:'.yellow, stockUpdate);
+
+      socket.emit('stockUpdate', stockUpdate);
       const output = `Broadcasting stock update: ${JSON.stringify(stockUpdate, null, 2)}`;
       console.log(output.yellow);
-    }, 5000); // Update every 5 seconds
-  };
+    }, 5000);
 
-
-
+    socket.on('disconnect', () => {
+      console.log(`Client disconnected: ${socket.id}`.red);
+      clearInterval(interval);
+    });
+  });
+};

@@ -1,16 +1,21 @@
-
-import Sidebar from './SideBar';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Sidebar from './SideBar';
 
-const Layout = ({ handleLogout }: { handleLogout: () => void }) => {
+interface LayoutProps {
+  handleLogout: () => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({ handleLogout }) => {
   return (
-    <div className="flex">
+    <div className="flex h-screen overflow-hidden">
       <Sidebar handleLogout={handleLogout} />
-      <div className="flex-grow p-4">
+      <main className="flex-1 overflow-y-auto bg-gray-100">
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 };
 
 export default Layout;
+

@@ -89,25 +89,6 @@ export const deleteUserById = async (req:Request, res:Response) =>{
 
 
 //Testing Stock APIS
-export const checkAPI = async (req:Request, res:Response)=>{
-  try{
-    const options={
-      method:'GET',
-      url:`https://api.finage.co.uk/last/stock/AAPL?apikey=${process.env.FINAGEAPI_KEY}`,
-      json:true
-    };
-
-    const response = await axios.request(options);
-    //return data in json format
-    res.json(response.data);  
-
-  }catch(error){
-    console.error('API Error:', error);
-    res.status(500).json({error:'Error fetching the data'})
-  }
-}
-
-
 export const getStockData = async (req:Request, res:Response)=>{
   try{
     const stockSymbol = req.params.symbol || 'AAPL';
@@ -139,45 +120,3 @@ export const checkServerRunning = async(req:Request, res:Response) =>{
 }
 
 
-
-// export const getProfile = async (req: Request, res: Response): Promise<void> => {
-//   try {
-//     // Get the token from cookies
-//     const token = req.cookies.token;
-//     if (!token) {
-//       res.status(401).json({ message: "No token provided" });
-//       return;
-//     }
-
-//     // Decode the token to get the user's ID
-//     const secretToken = process.env.JWT_SECRET;
-//     if (!secretToken) {
-//       res.status(500).json({ message: "Server error: JWT_SECRET is not configured" });
-//       return;
-//     }
-
-//     const decoded = jwt.verify(token, secretToken) as { id: string };
-//     const userId = parseInt(decoded.id, 10); // Convert string to number
-
-//     if (isNaN(userId)) {
-//       res.status(400).json({ message: "Invalid user ID" });
-//       return;
-//     }
-
-//     // Fetch the user's details from the database
-//     const user = await prisma.user.findUnique({
-//       where: { id: userId },
-//       select: { id: true, username: true, email: true }, // Only select necessary fields
-//     });
-
-//     if (!user) {
-//       res.status(404).json({ message: "User not found" });
-//       return;
-//     }
-
-//     res.status(200).json(user);
-//   } catch (error) {
-//     console.error("Error fetching user profile:", error);
-//     res.status(500).json({ message: "Error fetching user profile", error });
-//   }
-// };

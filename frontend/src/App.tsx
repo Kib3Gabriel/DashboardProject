@@ -62,11 +62,45 @@
 
 
 
-// new
+// // new working
+// import { useState } from "react";
+// import { BrowserRouter as Router } from "react-router-dom";
+// import AppRoutes from "./components/routes/Routes";
+// import { WebSocketProvider } from "./components/webScoket/websocketContext";
+
+// function App() {
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+//   const handleLogout = () => {
+//     setIsAuthenticated(false);
+//     localStorage.removeItem("authToken");
+//     alert("You have been logged out.");
+//   };
+
+//   return (
+//     <WebSocketProvider>
+//       <Router>
+//         <AppRoutes
+//           isAuthenticated={isAuthenticated}
+//           setIsAuthenticated={setIsAuthenticated}
+//           handleLogout={handleLogout}
+//         />
+//       </Router>
+//     </WebSocketProvider>
+//   );
+// }
+
+// export default App;
+
+
+
+
+import { WebSocketProvider } from "./components/webScoket/websocketContext";
+import { AlertProvider } from "./components/contexts/AlertContext";
+import { Toaster } from 'react-hot-toast';
 import { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "./components/routes/Routes";
-import { WebSocketProvider } from "./components/webScoket/websocketContext";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -79,15 +113,19 @@ function App() {
 
   return (
     <WebSocketProvider>
-      <Router>
-        <AppRoutes
-          isAuthenticated={isAuthenticated}
-          setIsAuthenticated={setIsAuthenticated}
-          handleLogout={handleLogout}
-        />
-      </Router>
+      <AlertProvider>
+        <Router>
+          <AppRoutes
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+            handleLogout={handleLogout}
+          />
+        </Router>
+        <Toaster position="top-right" />
+      </AlertProvider>
     </WebSocketProvider>
   );
 }
 
 export default App;
+
